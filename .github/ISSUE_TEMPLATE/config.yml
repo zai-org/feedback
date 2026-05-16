@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 先搜一下已有建议
+    url: https://github.com/panda920/zcode-feedback/issues?q=is%3Aissue
+    about: 提交前请先搜索，看看是否已有类似建议，避免重复

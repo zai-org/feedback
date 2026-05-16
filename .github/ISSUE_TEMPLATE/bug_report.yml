@@ -1,0 +1,71 @@
+name: 🐛 Bug 反馈
+description: 报告 ZCode 的缺陷或异常表现
+title: "[Bug] "
+labels: ["type: Bug", "status: 待评估"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你帮我们发现问题！请尽量完整地填写以下信息，越详细我们越快能定位。
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 问题描述
+      description: 简要说明你遇到的问题
+      placeholder: 例：点击 X 按钮后页面白屏……
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 一步一步说明如何重现这个问题
+      placeholder: |
+        1. 打开 ZCode
+        2. 进入 X 页面
+        3. 点击 Y 按钮
+        4. 看到……
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望表现
+      placeholder: 应该……
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际表现
+      placeholder: 实际……
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: ZCode 版本
+      placeholder: 例：v1.2.3
+    validations:
+      required: true
+
+  - type: input
+    id: env
+    attributes:
+      label: 设备 / 系统 / 浏览器
+      placeholder: 例：iPhone 15 / iOS 17 / Safari
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 截图 / 录屏 / 日志
+      description: 有的话请贴上来，能大幅加快定位速度
+    validations:
+      required: false

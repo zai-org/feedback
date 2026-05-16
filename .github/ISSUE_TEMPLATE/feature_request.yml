@@ -1,0 +1,53 @@
+name: 💡 功能建议
+description: 为 ZCode 提出新功能或体验优化建议
+title: "[建议] "
+labels: ["type: 功能建议", "status: 待评估"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你为 ZCode 提建议！请尽量完整地填写以下信息，方便我们快速评估。
+
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 使用场景
+      description: 你在什么情况下遇到了这个需求？现在是怎么做的？有什么不方便？
+      placeholder: 例：每次我想 X 的时候，需要手动 Y，很麻烦……
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议方案
+      description: 你希望产品怎么改进？可以描述想要的效果，也可以提具体的方案
+      placeholder: 例：希望增加一个 X 功能，可以一键完成 Y……
+    validations:
+      required: true
+
+  - type: textarea
+    id: value
+    attributes:
+      label: 预期价值
+      description: 这个建议如果实现了，能给你（或其他用户）带来什么帮助？
+      placeholder: 例：可以节省 X 分钟；可以避免 Y 错误……
+    validations:
+      required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: 你使用的 ZCode 版本 / 环境
+      placeholder: 例：v1.2.3 / Web / iOS
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充材料
+      description: 截图、参考产品、相关链接等
+      placeholder: 拖拽图片到这里即可上传
+    validations:
+      required: false
