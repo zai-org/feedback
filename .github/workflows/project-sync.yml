@@ -1,0 +1,19 @@
+name: Sync issues to Project
+
+# 自动把新 issue 加入 ZCode 反馈处理看板
+# Adds new issues to the "ZCode 反馈处理" Project board.
+
+on:
+  issues:
+    types: [opened, reopened, labeled]
+
+jobs:
+  add-to-project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/add-to-project@v1.0.2
+        with:
+          # ⚠️ 部署后请把下面的 URL 替换成实际的 Project URL，并在仓库 Settings → Secrets → Actions 添加 ADD_TO_PROJECT_PAT
+          # ⚠️ After deploy, set this URL to the actual Project URL and add ADD_TO_PROJECT_PAT secret.
+          project-url: https://github.com/users/panda920/projects/REPLACE_ME
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}

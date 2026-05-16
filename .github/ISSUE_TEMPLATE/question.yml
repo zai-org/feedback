@@ -1,0 +1,49 @@
+name: 🙋 使用问题 · Usage Question
+description: 不确定是 Bug 还是使用问题？建议先去 Discussions Q&A，确实需要追踪可在此提交。
+title: "[Q] "
+labels: ["type: 使用问题", "status: 待评估"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > ⚠️ **优先建议去 [Discussions → Q&A](../../discussions/categories/q-a)** —— 社区互助更快。
+        > **Prefer [Discussions → Q&A](../../discussions/categories/q-a)** — the community can usually help faster.
+        >
+        > 只有确认是产品问题、需要团队跟进时再用这个模板。
+        > Use this template only when you need maintainer follow-up.
+
+  - type: dropdown
+    id: module
+    attributes:
+      label: 产品模块 · Product module
+      options:
+        - "模块A · Module A"
+        - "模块B · Module B"
+        - "模块C · Module C"
+        - "其他 / 不确定 · Other / Not sure"
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: 你的问题 · Your question
+      placeholder: "尽量具体描述你想做什么、遇到什么困惑 / Describe what you're trying to do and where you're stuck"
+    validations:
+      required: true
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: 你已经尝试过什么 · What you've tried
+      placeholder: "已查阅的文档、尝试的步骤等 / Docs you've read, things you've tried"
+    validations:
+      required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: ZCode 版本 / 环境 · Version / Environment
+      placeholder: "e.g.: v1.2.3 / Web"
+    validations:
+      required: false

@@ -1,5 +1,11 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 💬 先搜一下已有建议
+  - name: 💬 使用问题 / 想法讨论 · Q&A & Ideas (Discussions)
+    url: https://github.com/panda920/zcode-feedback/discussions
+    about: 使用问题、模糊想法、投票，请在 Discussions 提出 / For questions, loose ideas, and polls.
+  - name: 🔒 安全漏洞 · Security Vulnerability
+    url: https://github.com/panda920/zcode-feedback/security/advisories/new
+    about: 请勿公开提交，使用私密报告渠道 / Do NOT disclose publicly — use private reporting.
+  - name: 🔎 先搜索一下 · Search First
     url: https://github.com/panda920/zcode-feedback/issues?q=is%3Aissue
-    about: 提交前请先搜索，看看是否已有类似建议，避免重复
+    about: 提交前请先搜索已有 issue，避免重复 / Please search existing issues to avoid duplicates.

@@ -1,0 +1,103 @@
+name: Monthly stats
+
+on:
+  schedule:
+    - cron: '0 1 1 * *'   # 每月 1 号 09:00 UTC+8
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate stats
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const now = new Date();
+            const start = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 1, 1));
+            const end   = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(),     1));
+            const month = `${start.getUTCFullYear()}-${String(start.getUTCMonth()+1).padStart(2,'0')}`;
+
+            const all = await github.paginate(github.rest.issues.listForRepo, {
+              owner, repo, state: 'all', since: start.toISOString(), per_page: 100,
+            });
+            const issuesOnly = all.filter(i => !i.pull_request);
+
+            const opened = issuesOnly.filter(i => new Date(i.created_at) >= start && new Date(i.created_at) < end);
+            const closed = issuesOnly.filter(i => i.closed_at && new Date(i.closed_at) >= start && new Date(i.closed_at) < end);
+            const acceptedClosed = closed.filter(i =>
+              (i.labels || []).some(l => (l.name || '').startsWith('status: 已上线') || (l.name || '').startsWith('status: 已采纳'))
+            );
+            const acceptanceRate = closed.length ? (acceptedClosed.length / closed.length * 100).toFixed(1) : '—';
+
+            const countBy = (key) => {
+              const m = new Map();
+              for (const i of opened) {
+                for (const l of (i.labels || [])) {
+                  const name = l.name || '';
+                  if (name.startsWith(key)) m.set(name, (m.get(name) || 0) + 1);
+                }
+              }
+              return [...m.entries()].sort((a,b) => b[1]-a[1]);
+            };
+
+            const byType     = countBy('type:');
+            const bySeverity = countBy('severity:');
+            const byModule   = countBy('module:');
+
+            const fmtRow = (arr) => arr.length ? arr.map(([k,v]) => `| \`${k}\` | ${v} |`).join('\n') : '| _无 / none_ | 0 |';
+
+            const md = `# ZCode 反馈月度统计 · Monthly Stats
+
+> 最近更新 / Last updated: ${now.toISOString()}
+> 统计区间 / Period: **${month}**
+
+## 概览 · Overview
+
+| 指标 / Metric | 数值 / Value |
+| --- | ---: |
+| 新增 issue / Opened | ${opened.length} |
+| 关闭 issue / Closed | ${closed.length} |
+| 采纳率 / Acceptance rate | ${acceptanceRate}% |
+
+## 按类型 · By Type
+| Label | Count |
+| --- | ---: |
+${fmtRow(byType)}
+
+## 按严重程度 · By Severity
+| Label | Count |
+| --- | ---: |
+${fmtRow(bySeverity)}
+
+## 按模块 · By Module
+| Label | Count |
+| --- | ---: |
+${fmtRow(byModule)}
+
+---
+_自动生成 by \`.github/workflows/monthly-stats.yml\`_
+`;
+            fs.writeFileSync('STATS.md', md);
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- STATS.md; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add STATS.md
+          git commit -m "chore: update monthly stats"
+          git push

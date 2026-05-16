@@ -1,0 +1,32 @@
+name: Mark stale issues
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 每天 09:00 UTC+8
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-issue-stale: 14
+          days-before-issue-close: 30
+          stale-issue-label: stale
+          # 只对等待用户补充信息的 issue 走 stale 关闭流程
+          only-issue-labels: 'needs: 更多信息'
+          exempt-issue-labels: 'status: 已采纳,status: 开发中,priority: P0,priority: P1'
+          stale-issue-message: |
+            👋 这个 issue 距上次更新已超过 14 天且仍在等待补充信息。
+            如果 30 天内没有进一步回复，我们会自动关闭它（随时可以重新打开）。
+
+            👋 This issue has been waiting for more info for over 14 days.
+            It will auto-close in 30 days if there's no further response. You can reopen anytime.
+          close-issue-message: |
+            自动关闭（长时间未补充信息）。如还有问题，请重新打开并补充上下文。
+            Auto-closed due to inactivity. Please reopen with more details if still relevant.
+          remove-stale-when-updated: true

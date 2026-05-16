@@ -1,71 +1,115 @@
-name: 🐛 Bug 反馈
-description: 报告 ZCode 的缺陷或异常表现
+name: 🐛 Bug 反馈 · Bug Report
+description: 报告 ZCode 的缺陷或异常 · Report a defect or unexpected behavior
 title: "[Bug] "
 labels: ["type: Bug", "status: 待评估"]
 body:
   - type: markdown
     attributes:
       value: |
-        感谢你帮我们发现问题！请尽量完整地填写以下信息，越详细我们越快能定位。
+        感谢你帮我们发现问题！信息越完整，定位越快。
+        Thanks for helping us find issues — the more detail, the faster the fix.
+
+  - type: checkboxes
+    id: prechecks
+    attributes:
+      label: 提交前确认 · Pre-submission checklist
+      options:
+        - label: 我已搜索过现有 issue，确认这不是重复 / I searched existing issues and confirmed this isn't a duplicate.
+          required: true
+        - label: 我已阅读 [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md) / I've read CONTRIBUTING.md.
+          required: true
+
+  - type: dropdown
+    id: module
+    attributes:
+      label: 产品模块 · Product module
+      options:
+        - "模块A · Module A"
+        - "模块B · Module B"
+        - "模块C · Module C"
+        - "其他 / 不确定 · Other / Not sure"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 严重程度 · Severity
+      options:
+        - "阻塞使用 · Blocking (无法使用核心功能 / core function unusable)"
+        - "影响体验 · Major (功能可用但体验受损 / works but degraded)"
+        - "轻微 · Minor (小问题不影响主流程 / minor, no impact on main flow)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: 复现频率 · Reproducibility
+      options:
+        - "必现 · Always"
+        - "偶现 · Sometimes"
+        - "仅一次 · Once"
+    validations:
+      required: true
 
   - type: textarea
     id: summary
     attributes:
-      label: 问题描述
-      description: 简要说明你遇到的问题
-      placeholder: 例：点击 X 按钮后页面白屏……
+      label: 问题描述 · Description
+      placeholder: "例 / e.g.: 点击 X 按钮后页面白屏 / Page goes blank after clicking X"
     validations:
       required: true
 
   - type: textarea
     id: steps
     attributes:
-      label: 复现步骤
-      description: 一步一步说明如何重现这个问题
+      label: 复现步骤 · Steps to reproduce
+      description: 一步一步说明如何重现 / Numbered steps to reproduce
       placeholder: |
-        1. 打开 ZCode
-        2. 进入 X 页面
-        3. 点击 Y 按钮
-        4. 看到……
+        1. 打开 ZCode / Open ZCode
+        2. 进入 X 页面 / Go to page X
+        3. 点击 Y 按钮 / Click button Y
+        4. 看到…… / See…
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: 期望表现
-      placeholder: 应该……
+      label: 期望表现 · Expected behavior
+      placeholder: 应该…… / Should…
     validations:
       required: true
 
   - type: textarea
     id: actual
     attributes:
-      label: 实际表现
-      placeholder: 实际……
+      label: 实际表现 · Actual behavior
+      placeholder: 实际…… / Actually…
     validations:
       required: true
 
   - type: input
     id: version
     attributes:
-      label: ZCode 版本
-      placeholder: 例：v1.2.3
+      label: ZCode 版本 · ZCode version
+      placeholder: "e.g.: v1.2.3"
     validations:
       required: true
 
   - type: input
     id: env
     attributes:
-      label: 设备 / 系统 / 浏览器
-      placeholder: 例：iPhone 15 / iOS 17 / Safari
+      label: 设备 / 系统 / 浏览器 · Device / OS / Browser
+      placeholder: "e.g.: iPhone 15 / iOS 17 / Safari 17"
     validations:
       required: true
 
   - type: textarea
-    id: screenshots
+    id: evidence
     attributes:
-      label: 截图 / 录屏 / 日志
-      description: 有的话请贴上来，能大幅加快定位速度
+      label: 截图 / 录屏 / 日志 · Screenshots / Recordings / Logs
+      description: 强烈建议提供 / Strongly recommended
     validations:
       required: false

@@ -1,45 +1,102 @@
-# ZCode 用户建议与反馈
+<div align="center">
 
-欢迎来到 **ZCode** 的用户建议收集仓库。这里用于收集所有用户对 ZCode 产品的建议、Bug 反馈，并公开展示我们的处理进度。
+# ZCode 用户反馈 · User Feedback
 
-## 🙋 我想提交建议或反馈
+**ZCode 的用户建议、Bug 反馈与处理进度公开追踪**
+The public hub for ZCode user suggestions, bug reports, and progress tracking.
 
-请前往 [**Issues**](../../issues/new/choose) 选择对应模板：
+[![Issues](https://img.shields.io/github/issues/panda920/zcode-feedback?label=反馈%20Issues)](../../issues)
+[![Closed Issues](https://img.shields.io/github/issues-closed/panda920/zcode-feedback?label=已处理%20Closed)](../../issues?q=is%3Aissue+is%3Aclosed)
+[![Discussions](https://img.shields.io/github/discussions/panda920/zcode-feedback?label=讨论%20Discussions)](../../discussions)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](./LICENSE)
 
-- 💡 **功能建议** — 提出新功能、体验优化等想法
-- 🐛 **Bug 反馈** — 报告产品缺陷或异常
+</div>
 
-> 提交前请先在 [Issues 列表](../../issues?q=is%3Aissue) 搜一下，看看是不是有人提过同样的问题，有的话给它点个 👍 就好。
+---
 
-## 📊 我想看处理进度
+## 📌 快速入口 · Quick Links
 
-所有建议的处理状态都通过 **Label** 标记，可以在 Issue 列表里按标签筛选：
+| 我想…… | I want to… | 入口 |
+| --- | --- | --- |
+| 提一个**功能建议** | Suggest a **feature** | [新建建议 →](../../issues/new?template=feature_request.yml) |
+| 报一个 **Bug** | Report a **bug** | [提交 Bug →](../../issues/new?template=bug_report.yml) |
+| 问个**使用问题** | Ask a **usage question** | [前往 Discussions →](../../discussions) |
+| 看**处理进度** | See **progress** | [Project 看板 →](../../projects) · [Issues 列表 →](../../issues) |
+| 看**未来规划** | See the **roadmap** | [ROADMAP.md →](./ROADMAP.md) |
+| 看**最近更新** | See **changelog** | [CHANGELOG.md →](./CHANGELOG.md) |
 
-| 状态标签 | 含义 |
+> 提交前请先在 [Issues](../../issues?q=is%3Aissue) 和 [Discussions](../../discussions) 搜一下，避免重复。
+> Please search existing issues and discussions before submitting to avoid duplicates.
+
+---
+
+## 🤝 我们的承诺 · Our Commitment
+
+- **首次响应 SLA**：3 个工作日内会有维护者评论你的 issue。
+  *First-response SLA: a maintainer will comment within 3 business days.*
+- **状态全程公开**：每条反馈都有明确的 `status:` 标签，可在 [看板](../../projects) 看到流转。
+  *Full transparency: every issue carries a `status:` label, visible on the project board.*
+- **拒绝会说明原因**：被标为 `已拒绝` 的建议，我们会在评论里给出理由。
+  *Rejections are explained: declined suggestions get a written reason.*
+
+---
+
+## 🔄 处理流程 · Workflow
+
+```mermaid
+flowchart LR
+    A[用户提交 Issue<br/>User submits] --> B[status: 待评估<br/>Triage]
+    B -->|不采纳| X[status: 已拒绝<br/>Declined（关闭/Closed）]
+    B -->|采纳| C[status: 已采纳<br/>Accepted]
+    C --> D[status: 开发中<br/>In Progress]
+    D --> E[status: 已上线<br/>Shipped（关闭/Closed）]
+    B -.信息不全.-> N[needs: 更多信息<br/>Need more info]
+    N -.补充后.-> B
+```
+
+---
+
+## 🏷️ 标签体系 · Labels
+
+### 状态 / Status
+
+| 标签 Label | 含义 Meaning |
 | --- | --- |
-| `status: 待评估` | 已收到，等待团队评估 |
-| `status: 已采纳` | 已确认会做，等待排期 |
-| `status: 开发中` | 正在开发 |
-| `status: 已上线` | 已发布到线上 |
-| `status: 已拒绝` | 经评估暂不采纳（会注明原因） |
+| `status: 待评估` | 已收到，等待团队评估 · Triage |
+| `status: 已采纳` | 已确认会做，等待排期 · Accepted |
+| `status: 开发中` | 正在开发 · In Progress |
+| `status: 已上线` | 已发布到线上 · Shipped |
+| `status: 已拒绝` | 经评估暂不采纳（含原因） · Declined |
 
-类型标签：`type: 功能建议`、`type: Bug`
-优先级标签：`priority: P0` / `P1` / `P2`
+### 类型 / Type
+`type: 功能建议` · `type: Bug` · `type: 使用问题`
 
-## 🔄 处理流程
+### 严重程度（Bug 专用） / Severity
+`severity: 阻塞` · `severity: 影响体验` · `severity: 轻微`
 
-```
-用户提交 Issue
-   ↓
-待评估  ──→  已拒绝（会在评论中说明原因并关闭）
-   ↓
-已采纳
-   ↓
-开发中
-   ↓
-已上线（关闭 Issue）
-```
+### 优先级 / Priority
+`priority: P0` · `priority: P1` · `priority: P2`
 
-我们会在每条 Issue 下用评论同步进展。有任何疑问，欢迎在对应 Issue 下留言。
+### 其他 / Misc
+`needs: 更多信息` · `needs: 复现` · `good first issue` · `help wanted`
 
-感谢你帮助 ZCode 变得更好 🙏
+---
+
+## 📚 进阶文档 · More
+
+- [CONTRIBUTING.md](./CONTRIBUTING.md) — 怎么提一份高质量反馈 / How to file great feedback
+- [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) — 社区行为准则 / Code of conduct
+- [SECURITY.md](./SECURITY.md) — 安全漏洞私密上报 / Private vulnerability reporting
+- [SUPPORT.md](./SUPPORT.md) — 我该去哪儿？ / Where to ask
+- [ROADMAP.md](./ROADMAP.md) — 产品路线图 / Roadmap
+- [CHANGELOG.md](./CHANGELOG.md) — 发布记录 / Release notes
+
+---
+
+## 🙏 致谢 · Thanks
+
+感谢每一位提交反馈、参与讨论、推动 ZCode 变得更好的用户。
+Thanks to everyone who files feedback, joins discussions, and helps make ZCode better.
+
+<!-- prettier-ignore -->
+<sub>This is a feedback repository. Content is licensed under [CC BY 4.0](./LICENSE).</sub>
