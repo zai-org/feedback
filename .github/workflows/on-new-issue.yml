@@ -1,0 +1,66 @@
+name: On new issue
+
+# 合并版：欢迎评论 + 兜底优先级标签 + 加入 Project，
+# 只在 issue 第一次创建时触发一次，避免重复邮件通知。
+# Consolidated: welcome comment + fallback priority + add-to-project,
+# fires only on first creation to avoid noisy notifications.
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+concurrency:
+  group: new-issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome comment + fallback priority label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+
+            // 1) 兜底 priority 标签
+            const { data: issue } = await github.rest.issues.get({ owner, repo, issue_number });
+            const names = issue.labels.map(l => (typeof l === 'string' ? l : l.name));
+            if (!names.some(n => n.startsWith('priority:'))) {
+              await github.rest.issues.addLabels({
+                owner, repo, issue_number, labels: ['priority: P2'],
+              });
+            }
+
+            // 2) 欢迎评论（双语，一条搞定）
+            const body = [
+              '👋 感谢你的反馈，我们已经收到。',
+              '',
+              '- 维护者会在 **3 个工作日内** 给出首次响应。',
+              '- 状态保持为 `status: 待评估`，你可以随时补充信息。',
+              '- 信息不全时我们会打上 `needs: 更多信息` 标签并 @ 你。',
+              '',
+              '---',
+              '',
+              '👋 Thanks — we\'ve received your issue.',
+              '',
+              '- A maintainer will respond within **3 business days**.',
+              '- Status stays at `status: 待评估` (Triage); feel free to add context.',
+              '- If we need more details, we\'ll add `needs: 更多信息` and ping you.',
+            ].join('\n');
+            await github.rest.issues.createComment({ owner, repo, issue_number, body });
+
+  # 单独的 add-to-project job（需要先配置 secret 和 project URL，未配置时会自动跳过）
+  add-to-project:
+    runs-on: ubuntu-latest
+    needs: triage
+    if: ${{ vars.PROJECT_URL != '' }}
+    steps:
+      - uses: actions/add-to-project@v1.0.2
+        with:
+          project-url: ${{ vars.PROJECT_URL }}
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}

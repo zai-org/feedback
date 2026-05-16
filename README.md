@@ -77,6 +77,12 @@ flowchart LR
 ### 优先级 / Priority
 `priority: P0` · `priority: P1` · `priority: P2`
 
+### 问题类别 / Category（横向能力）
+`cat: UI` · `cat: 性能` · `cat: 稳定性` · `cat: 对话` · `cat: 工具/MCP` · `cat: 文件操作` · `cat: 模型` · `cat: 账号` · `cat: 计费` · `cat: 文档`
+
+### Agent 框架 / Framework
+`fw: ZCode Agent` · `fw: Claude Code` · `fw: Codex` · `fw: opencode` · `fw: Gemini CLI`
+
 ### 其他 / Misc
 `needs: 更多信息` · `needs: 复现` · `good first issue` · `help wanted`
 

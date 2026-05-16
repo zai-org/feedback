@@ -20,14 +20,37 @@ body:
           required: true
 
   - type: dropdown
-    id: module
+    id: category
     attributes:
-      label: 产品模块 · Product module
+      label: 问题类别 · Category
       options:
-        - "模块A · Module A"
-        - "模块B · Module B"
-        - "模块C · Module C"
+        - "UI / 界面体验 · UI / UX"
+        - "性能 · Performance"
+        - "稳定性 / 崩溃 · Stability / Crash"
+        - "对话 / Agent 交互 · Agent chat"
+        - "工具调用 / MCP · Tool use / MCP"
+        - "文件 / 项目操作 · File / Project ops"
+        - "模型设置 / 切换 · Model config"
+        - "账号 / 登录 · Account / Login"
+        - "计费 / 配额 · Billing / Quota"
+        - "文档 / 教程 · Docs"
         - "其他 / 不确定 · Other / Not sure"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: framework
+    attributes:
+      label: 涉及的 Agent 框架 · Agent framework
+      description: Bug 出现在哪个框架里？/ Which framework exhibits the bug?
+      options:
+        - "ZCode Agent（自研）"
+        - "Claude Code"
+        - "Codex"
+        - "opencode"
+        - "Gemini CLI"
+        - "多个 / 通用 · Multiple / General"
+        - "不涉及框架 · Not framework-specific"
     validations:
       required: true
 

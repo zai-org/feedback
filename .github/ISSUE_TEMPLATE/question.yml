@@ -13,14 +13,16 @@ body:
         > Use this template only when you need maintainer follow-up.
 
   - type: dropdown
-    id: module
+    id: framework
     attributes:
-      label: 产品模块 · Product module
+      label: 涉及的框架 · Framework
       options:
-        - "模块A · Module A"
-        - "模块B · Module B"
-        - "模块C · Module C"
-        - "其他 / 不确定 · Other / Not sure"
+        - "ZCode Agent（自研）"
+        - "Claude Code"
+        - "Codex"
+        - "opencode"
+        - "Gemini CLI"
+        - "通用 / 不涉及 · General / N/A"
     validations:
       required: true
 

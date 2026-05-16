@@ -20,15 +20,38 @@ body:
           required: true
 
   - type: dropdown
-    id: module
+    id: category
     attributes:
-      label: 产品模块 · Product module
-      description: 选择最相关的模块 / Pick the most relevant module
+      label: 问题类别 · Category
+      description: 这个建议主要属于哪类？/ Which area does this fall under?
       options:
-        - "模块A · Module A"
-        - "模块B · Module B"
-        - "模块C · Module C"
+        - "UI / 界面体验 · UI / UX"
+        - "性能 · Performance (延迟 / 卡顿 / 资源占用)"
+        - "稳定性 / 崩溃 · Stability / Crash"
+        - "对话 / Agent 交互 · Agent chat / interaction"
+        - "工具调用 / MCP · Tool use / MCP"
+        - "文件 / 项目操作 · File / Project ops"
+        - "模型设置 / 切换 · Model config / switching"
+        - "账号 / 登录 · Account / Login"
+        - "计费 / 配额 · Billing / Quota"
+        - "文档 / 教程 · Docs / Tutorials"
         - "其他 / 不确定 · Other / Not sure"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: framework
+    attributes:
+      label: 涉及的 Agent 框架 · Agent framework
+      description: 这条建议是针对哪个框架的？不涉及具体框架可选"通用"。/ Which integrated framework does this concern?
+      options:
+        - "ZCode Agent（自研）"
+        - "Claude Code"
+        - "Codex"
+        - "opencode"
+        - "Gemini CLI"
+        - "多个 / 通用 · Multiple / General"
+        - "不涉及框架 · Not framework-specific"
     validations:
       required: true
 
