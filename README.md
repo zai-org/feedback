@@ -1,13 +1,15 @@
 <div align="center">
 
+<img src="./assets/brand/zai-logo-icon.svg" width="84" alt="Z.ai logo" />
+
 # ZCode 用户反馈 · User Feedback
 
-**ZCode 的用户建议、Bug 反馈与处理进度公开追踪**
-The public hub for ZCode user suggestions, bug reports, and progress tracking.
+**ZCode 官方用户反馈中心：收集建议、追踪缺陷、公开处理进度**
+The official ZCode feedback hub for suggestions, bug reports, and transparent progress tracking.
 
-[![Issues](https://img.shields.io/github/issues/panda920/zcode-feedback?label=反馈%20Issues)](../../issues)
-[![Closed Issues](https://img.shields.io/github/issues-closed/panda920/zcode-feedback?label=已处理%20Closed)](../../issues?q=is%3Aissue+is%3Aclosed)
-[![Discussions](https://img.shields.io/github/discussions/panda920/zcode-feedback?label=讨论%20Discussions)](../../discussions)
+[![Issues](https://img.shields.io/github/issues/zai-org/feedback?label=反馈%20Issues)](../../issues)
+[![Closed Issues](https://img.shields.io/github/issues-closed/zai-org/feedback?label=已处理%20Closed)](../../issues?q=is%3Aissue+is%3Aclosed)
+[![Discussions](https://img.shields.io/github/discussions/zai-org/feedback?label=讨论%20Discussions)](../../discussions)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](./LICENSE)
 
 </div>
