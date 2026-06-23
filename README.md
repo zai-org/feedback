@@ -2,108 +2,115 @@
 
 <img src="./assets/brand/zai-logo-icon.svg" width="84" alt="Z.ai logo" />
 
-# ZCode 用户反馈 · User Feedback
+# ZCode User Feedback
 
-**ZCode 官方用户反馈中心：收集建议、追踪缺陷、公开处理进度**
-The official ZCode feedback hub for suggestions, bug reports, and transparent progress tracking.
+**The official ZCode feedback hub for suggestions, bug reports, usage questions, and transparent progress tracking.**
 
-[![Issues](https://img.shields.io/github/issues/zai-org/feedback?label=反馈%20Issues)](../../issues)
-[![Closed Issues](https://img.shields.io/github/issues-closed/zai-org/feedback?label=已处理%20Closed)](../../issues?q=is%3Aissue+is%3Aclosed)
-[![Discussions](https://img.shields.io/github/discussions/zai-org/feedback?label=讨论%20Discussions)](../../discussions)
+[English](./README.md) · [简体中文](./README.zh-CN.md)
+
+[![Issues](https://img.shields.io/github/issues/zai-org/feedback?label=Issues)](../../issues)
+[![Closed Issues](https://img.shields.io/github/issues-closed/zai-org/feedback?label=Closed)](../../issues?q=is%3Aissue+is%3Aclosed)
+[![Discussions](https://img.shields.io/github/discussions/zai-org/feedback?label=Discussions)](../../discussions)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](./LICENSE)
 
 </div>
 
 ---
 
-## 📌 快速入口 · Quick Links
+## Community
 
-| 我想…… | I want to… | 入口 |
-| --- | --- | --- |
-| 提一个**功能建议** | Suggest a **feature** | [新建建议 →](../../issues/new?template=feature_request.yml) |
-| 报一个 **Bug** | Report a **bug** | [提交 Bug →](../../issues/new?template=bug_report.yml) |
-| 问个**使用问题** | Ask a **usage question** | [前往 Discussions →](../../discussions) |
-| 看**处理进度** | See **progress** | [Project 看板 →](../../projects) · [Issues 列表 →](../../issues) |
-| 看**未来规划** | See the **roadmap** | [ROADMAP.md →](./ROADMAP.md) |
-| 看**最近更新** | See **changelog** | [CHANGELOG.md →](./CHANGELOG.md) |
+- **Global community:** Join our [Discord server](https://discord.gg/EpH5XkTyhu) for product updates, feedback discussions, and help from the community.
+- **Mainland China community:** Scan the QR code below to join the ZCode user feedback group.
 
-> 提交前请先在 [Issues](../../issues?q=is%3Aissue) 和 [Discussions](../../discussions) 搜一下，避免重复。
-> Please search existing issues and discussions before submitting to avoid duplicates.
+<p align="center">
+  <img src="./assets/community/zcode-cn-feedback-group.png" width="360" alt="QR code for the ZCode Mainland China feedback group" />
+</p>
 
 ---
 
-## 🤝 我们的承诺 · Our Commitment
+## Quick Links
 
-- **首次响应 SLA**：3 个工作日内会有维护者评论你的 issue。
-  *First-response SLA: a maintainer will comment within 3 business days.*
-- **状态全程公开**：每条反馈都有明确的 `status:` 标签，可在 [看板](../../projects) 看到流转。
-  *Full transparency: every issue carries a `status:` label, visible on the project board.*
-- **拒绝会说明原因**：被标为 `已拒绝` 的建议，我们会在评论里给出理由。
-  *Rejections are explained: declined suggestions get a written reason.*
+| I want to... | Where to go |
+| --- | --- |
+| Suggest a **feature** | [Create a feature request ->](../../issues/new?template=feature_request.yml) |
+| Report a **bug** | [Submit a bug report ->](../../issues/new?template=bug_report.yml) |
+| Ask a **usage question** | [Go to Discussions ->](../../discussions) |
+| Check **progress** | [Project board ->](../../projects) · [Issues ->](../../issues) |
+| Read the **roadmap** | [ROADMAP.md ->](./ROADMAP.md) |
+| See **recent updates** | [CHANGELOG.md ->](./CHANGELOG.md) |
+
+Please search existing [Issues](../../issues?q=is%3Aissue) and [Discussions](../../discussions) before submitting, so we can keep duplicate reports together.
 
 ---
 
-## 🔄 处理流程 · Workflow
+## Our Commitment
+
+- **First-response SLA:** a maintainer will comment within 3 business days.
+- **Transparent status:** every issue carries a `status:` label and can be tracked on the [project board](../../projects).
+- **Explained decisions:** declined suggestions receive a written reason in the issue comments.
+
+---
+
+## Workflow
 
 ```mermaid
 flowchart LR
-    A[用户提交 Issue<br/>User submits] --> B[status: 待评估<br/>Triage]
-    B -->|不采纳| X[status: 已拒绝<br/>Declined（关闭/Closed）]
-    B -->|采纳| C[status: 已采纳<br/>Accepted]
-    C --> D[status: 开发中<br/>In Progress]
-    D --> E[status: 已上线<br/>Shipped（关闭/Closed）]
-    B -.信息不全.-> N[needs: 更多信息<br/>Need more info]
-    N -.补充后.-> B
+    A[User submits an issue] --> B[status: Triage]
+    B -->|Declined| X[status: Declined<br/>Closed]
+    B -->|Accepted| C[status: Accepted]
+    C --> D[status: In Progress]
+    D --> E[status: Shipped<br/>Closed]
+    B -.Need details.-> N[needs: More info]
+    N -.Updated by reporter.-> B
 ```
 
 ---
 
-## 🏷️ 标签体系 · Labels
+## Labels
 
-### 状态 / Status
+### Status
 
-| 标签 Label | 含义 Meaning |
+| Label | Meaning |
 | --- | --- |
-| `status: 待评估` | 已收到，等待团队评估 · Triage |
-| `status: 已采纳` | 已确认会做，等待排期 · Accepted |
-| `status: 开发中` | 正在开发 · In Progress |
-| `status: 已上线` | 已发布到线上 · Shipped |
-| `status: 已拒绝` | 经评估暂不采纳（含原因） · Declined |
+| `status: 待评估` | Triage: received and waiting for team review |
+| `status: 已采纳` | Accepted: confirmed and waiting for scheduling |
+| `status: 开发中` | In Progress: currently being implemented |
+| `status: 已上线` | Shipped: released to users |
+| `status: 已拒绝` | Declined: not planned after evaluation, with reason |
 
-### 类型 / Type
+### Type
 `type: 功能建议` · `type: Bug` · `type: 使用问题`
 
-### 严重程度（Bug 专用） / Severity
+### Severity
 `severity: 阻塞` · `severity: 影响体验` · `severity: 轻微`
 
-### 优先级 / Priority
+### Priority
 `priority: P0` · `priority: P1` · `priority: P2`
 
-### 问题类别 / Category（横向能力）
+### Category
 `cat: UI` · `cat: 性能` · `cat: 稳定性` · `cat: 对话` · `cat: 工具/MCP` · `cat: 文件操作` · `cat: 模型` · `cat: 账号` · `cat: 计费` · `cat: 文档`
 
-### Agent 框架 / Framework
+### Agent Framework
 `fw: ZCode Agent` · `fw: Claude Code` · `fw: Codex` · `fw: opencode` · `fw: Gemini CLI`
 
-### 其他 / Misc
+### Misc
 `needs: 更多信息` · `needs: 复现` · `good first issue` · `help wanted`
 
 ---
 
-## 📚 进阶文档 · More
+## More Docs
 
-- [CONTRIBUTING.md](./CONTRIBUTING.md) — 怎么提一份高质量反馈 / How to file great feedback
-- [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) — 社区行为准则 / Code of conduct
-- [SECURITY.md](./SECURITY.md) — 安全漏洞私密上报 / Private vulnerability reporting
-- [SUPPORT.md](./SUPPORT.md) — 我该去哪儿？ / Where to ask
-- [ROADMAP.md](./ROADMAP.md) — 产品路线图 / Roadmap
-- [CHANGELOG.md](./CHANGELOG.md) — 发布记录 / Release notes
+- [CONTRIBUTING.md](./CONTRIBUTING.md) — How to file high-quality feedback
+- [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) — Code of conduct
+- [SECURITY.md](./SECURITY.md) — Private vulnerability reporting
+- [SUPPORT.md](./SUPPORT.md) — Where to ask
+- [ROADMAP.md](./ROADMAP.md) — Roadmap
+- [CHANGELOG.md](./CHANGELOG.md) — Release notes
 
 ---
 
-## 🙏 致谢 · Thanks
+## Thanks
 
-感谢每一位提交反馈、参与讨论、推动 ZCode 变得更好的用户。
 Thanks to everyone who files feedback, joins discussions, and helps make ZCode better.
 
 <!-- prettier-ignore -->
